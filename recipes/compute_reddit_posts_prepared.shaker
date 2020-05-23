@@ -197,6 +197,33 @@
       "preview": false,
       "metaType": "PROCESSOR",
       "disabled": false,
+      "type": "FindReplace",
+      "params": {
+        "output": "",
+        "mapping": [
+          {
+            "from": "http\\S+",
+            "to": ""
+          },
+          {
+            "from": "www\\S+",
+            "to": ""
+          }
+        ],
+        "normalization": "EXACT",
+        "columns": [
+          "selftext"
+        ],
+        "appliesTo": "SINGLE_COLUMN",
+        "stopAfterFirstMatch": false,
+        "matching": "PATTERN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
       "type": "TextSimplifierProcessor",
       "params": {
         "inCol": "selftext",
@@ -222,33 +249,6 @@
         "language": "english",
         "clearStopWords": true,
         "stem": false
-      },
-      "alwaysShowComment": false
-    },
-    {
-      "preview": true,
-      "metaType": "PROCESSOR",
-      "disabled": false,
-      "type": "FindReplace",
-      "params": {
-        "output": "cleaned",
-        "mapping": [
-          {
-            "from": "http\\S+",
-            "to": ""
-          },
-          {
-            "from": "www\\S+",
-            "to": ""
-          }
-        ],
-        "normalization": "EXACT",
-        "columns": [
-          "selftext"
-        ],
-        "appliesTo": "SINGLE_COLUMN",
-        "stopAfterFirstMatch": false,
-        "matching": "PATTERN"
       },
       "alwaysShowComment": false
     }
