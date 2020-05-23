@@ -5,103 +5,7 @@
   },
   "keys": [
     {
-      "column": "created_utc"
-    },
-    {
-      "column": "subreddit"
-    },
-    {
-      "column": "author"
-    },
-    {
-      "column": "domain"
-    },
-    {
-      "column": "url"
-    },
-    {
-      "column": "num_comments"
-    },
-    {
-      "column": "score"
-    },
-    {
-      "column": "ups"
-    },
-    {
-      "column": "downs"
-    },
-    {
-      "column": "title"
-    },
-    {
       "column": "selftext"
-    },
-    {
-      "column": "saved"
-    },
-    {
-      "column": "id"
-    },
-    {
-      "column": "from_kind"
-    },
-    {
-      "column": "gilded"
-    },
-    {
-      "column": "from"
-    },
-    {
-      "column": "stickied"
-    },
-    {
-      "column": "retrieved_on"
-    },
-    {
-      "column": "over_18"
-    },
-    {
-      "column": "thumbnail"
-    },
-    {
-      "column": "subreddit_id"
-    },
-    {
-      "column": "hide_score"
-    },
-    {
-      "column": "link_flair_css_class"
-    },
-    {
-      "column": "author_flair_css_class"
-    },
-    {
-      "column": "archived"
-    },
-    {
-      "column": "is_self"
-    },
-    {
-      "column": "from_id"
-    },
-    {
-      "column": "permalink"
-    },
-    {
-      "column": "name"
-    },
-    {
-      "column": "author_flair_text"
-    },
-    {
-      "column": "quarantine"
-    },
-    {
-      "column": "link_flair_text"
-    },
-    {
-      "column": "distinguished"
     }
   ],
   "globalCount": false,
@@ -141,6 +45,17 @@
   },
   "outputColumnNameOverrides": {},
   "postFilter": {
+    "$status": {
+      "schema": {
+        "columns": [
+          {
+            "name": "selftext",
+            "type": "string"
+          }
+        ],
+        "userModified": false
+      }
+    },
     "distinct": false,
     "enabled": false
   }
