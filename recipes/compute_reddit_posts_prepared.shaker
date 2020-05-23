@@ -234,7 +234,11 @@
         "output": "cleaned",
         "mapping": [
           {
-            "from": "r\"http\\S+\"",
+            "from": "http\\S+",
+            "to": ""
+          },
+          {
+            "from": "www\\S+",
             "to": ""
           }
         ],
@@ -293,6 +297,7 @@
     "retrieved_on": 134,
     "name": 100,
     "ups": 100,
+    "cleaned": 300,
     "quarantine": 100,
     "permalink": 300
   },
