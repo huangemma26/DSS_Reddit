@@ -59,11 +59,11 @@
     "dimensions": []
   },
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590268965077
+    "lastModifiedOn": 1590270695129
   },
   "creationTag": {
     "versionNumber": 0,
@@ -95,32 +95,12 @@
         "type": "string"
       },
       {
-        "name": "author",
-        "type": "string"
-      },
-      {
-        "name": "domain",
-        "type": "string"
-      },
-      {
-        "name": "url",
-        "type": "string"
-      },
-      {
         "name": "num_comments",
         "type": "bigint"
       },
       {
         "name": "score",
         "type": "bigint"
-      },
-      {
-        "name": "ups",
-        "type": "string"
-      },
-      {
-        "name": "downs",
-        "type": "string"
       },
       {
         "name": "title",
@@ -131,92 +111,12 @@
         "type": "string"
       },
       {
-        "name": "saved",
-        "type": "string"
-      },
-      {
-        "name": "id",
-        "type": "string"
-      },
-      {
-        "name": "from_kind",
-        "type": "string"
-      },
-      {
         "name": "gilded",
         "type": "bigint"
       },
       {
-        "name": "from",
-        "type": "string"
-      },
-      {
-        "name": "stickied",
-        "type": "string"
-      },
-      {
         "name": "retrieved_on",
         "type": "bigint"
-      },
-      {
-        "name": "over_18",
-        "type": "boolean"
-      },
-      {
-        "name": "thumbnail",
-        "type": "string"
-      },
-      {
-        "name": "subreddit_id",
-        "type": "string"
-      },
-      {
-        "name": "hide_score",
-        "type": "string"
-      },
-      {
-        "name": "link_flair_css_class",
-        "type": "string"
-      },
-      {
-        "name": "author_flair_css_class",
-        "type": "string"
-      },
-      {
-        "name": "archived",
-        "type": "string"
-      },
-      {
-        "name": "is_self",
-        "type": "boolean"
-      },
-      {
-        "name": "from_id",
-        "type": "string"
-      },
-      {
-        "name": "permalink",
-        "type": "string"
-      },
-      {
-        "name": "name",
-        "type": "string"
-      },
-      {
-        "name": "author_flair_text",
-        "type": "string"
-      },
-      {
-        "name": "quarantine",
-        "type": "string"
-      },
-      {
-        "name": "link_flair_text",
-        "type": "string"
-      },
-      {
-        "name": "distinguished",
-        "type": "string"
       }
     ],
     "userModified": true
