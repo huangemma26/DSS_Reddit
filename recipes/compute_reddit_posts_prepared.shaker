@@ -192,6 +192,61 @@
         "appliesTo": "COLUMNS"
       },
       "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "TextSimplifierProcessor",
+      "params": {
+        "inCol": "selftext",
+        "outCol": "text_stemmed",
+        "sortAlphabetically": false,
+        "normalize": true,
+        "language": "english",
+        "clearStopWords": true,
+        "stem": true
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "TextSimplifierProcessor",
+      "params": {
+        "inCol": "selftext",
+        "outCol": "text",
+        "sortAlphabetically": false,
+        "normalize": true,
+        "language": "english",
+        "clearStopWords": true,
+        "stem": false
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": true,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "FindReplace",
+      "params": {
+        "output": "cleaned",
+        "mapping": [
+          {
+            "from": "r\"http\\S+\"",
+            "to": ""
+          }
+        ],
+        "normalization": "EXACT",
+        "columns": [
+          "selftext"
+        ],
+        "appliesTo": "SINGLE_COLUMN",
+        "stopAfterFirstMatch": false,
+        "matching": "PATTERN"
+      },
+      "alwaysShowComment": false
     }
   ],
   "maxProcessedMemTableBytes": -1,
@@ -209,6 +264,7 @@
     "saved": 100,
     "over_18": 100,
     "hide_score": 100,
+    "text_stemmed": 300,
     "title": 300,
     "subreddit": 113,
     "subreddit_id": 134,
@@ -218,6 +274,7 @@
     "archived": 100,
     "from": 100,
     "id": 100,
+    "text": 300,
     "created_utc": 127,
     "is_self": 100,
     "link_flair_css_class": 165,
@@ -226,6 +283,7 @@
     "link_flair_text": 148,
     "cleantext": 300,
     "downs": 100,
+    "test": 300,
     "author": 155,
     "newcolumn_expression": 165,
     "distinguished": 113,
