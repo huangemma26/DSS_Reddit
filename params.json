@@ -171,11 +171,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 1,
+    "versionNumber": 6,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590017501061
+    "lastModifiedOn": 1590272097849
   },
   "creationTag": {
     "versionNumber": 0,
@@ -188,6 +188,49 @@
   "tags": [],
   "customFields": {},
   "checklists": {
-    "checklists": []
+    "checklists": [
+      {
+        "id": "8a502d",
+        "title": "Todo list",
+        "createdOn": 0,
+        "items": [
+          {
+            "done": false,
+            "text": "Clean Data",
+            "createdOn": 1590272050933,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          },
+          {
+            "done": false,
+            "text": "Topic Models",
+            "createdOn": 1590272066668,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          },
+          {
+            "done": false,
+            "text": "LSTM",
+            "createdOn": 1590272070599,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          },
+          {
+            "done": false,
+            "text": "Feed results back into model",
+            "createdOn": 1590272082999,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          },
+          {
+            "done": false,
+            "text": "Train model on Google Big Query",
+            "createdOn": 1590272097765,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          }
+        ]
+      }
+    ]
   }
 }
