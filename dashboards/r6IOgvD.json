@@ -60,11 +60,11 @@
   "name": "Identifying Toxicity Using Reddit Posts\u0027s default dashboard",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 4,
+    "versionNumber": 5,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590525559106
+    "lastModifiedOn": 1590525605647
   },
   "creationTag": {
     "versionNumber": 0,
