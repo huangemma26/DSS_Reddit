@@ -1314,7 +1314,8 @@
   "backendType": "KERAS",
   "maxConcurrentModelTraining": 2,
   "envSelection": {
-    "envMode": "USE_BUILTIN_MODE"
+    "envMode": "EXPLICIT_ENV",
+    "envName": "Tensorflow"
   },
   "containerSelection": {
     "containerMode": "INHERIT"
