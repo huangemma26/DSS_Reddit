@@ -65,13 +65,64 @@
       "def": {
         "type": "grouped_columns",
         "variant": "normal",
-        "name": "New chart",
-        "userEditedName": false,
-        "genericDimension0": [],
+        "name": "Average Score per LDA Topic",
+        "userEditedName": true,
+        "genericDimension0": [
+          {
+            "column": "lda_topic",
+            "type": "NUMERICAL",
+            "numParams": {
+              "mode": "NONE",
+              "nbBins": 10,
+              "binSize": 100,
+              "emptyBinsMode": "ZEROS"
+            },
+            "maxValues": 100,
+            "generateOthersCategory": true,
+            "oneTickPerBin": false,
+            "filters": [],
+            "isA": "dimension",
+            "possibleSorts": [
+              {
+                "type": "NATURAL",
+                "label": "Natural ordering",
+                "sortAscending": true
+              },
+              {
+                "type": "AGGREGATION",
+                "measureIdx": 0,
+                "label": "Average of score, descending"
+              },
+              {
+                "type": "AGGREGATION",
+                "measureIdx": 0,
+                "label": "Average of score, ascending",
+                "sortAscending": true
+              }
+            ],
+            "sort": {
+              "type": "NATURAL",
+              "label": "Natural ordering",
+              "sortAscending": true
+            }
+          }
+        ],
         "genericDimension1": [],
         "facetDimension": [],
         "animationDimension": [],
-        "genericMeasures": [],
+        "genericMeasures": [
+          {
+            "column": "score",
+            "function": "AVG",
+            "type": "NUMERICAL",
+            "displayed": true,
+            "isA": "measure",
+            "displayAxis": "axis1",
+            "displayType": "column",
+            "computeMode": "NORMAL",
+            "computeModeDim": 0
+          }
+        ],
         "xDimension": [],
         "yDimension": [],
         "uaXDimension": [],
@@ -89,6 +140,7 @@
         "tooltipMeasures": [],
         "boxplotBreakdownDim": [],
         "boxplotValue": [],
+        "filters": [],
         "axis1LogScale": false,
         "axis2LogScale": false,
         "includeZero": true,
@@ -130,6 +182,7 @@
           "defaultRadius": 5.0,
           "singleShape": "FILLED_CIRCLE"
         },
+        "computeMode": "NORMAL",
         "xAxisMode": "NORMAL",
         "yAxisMode": "NORMAL",
         "pieOptions": {
@@ -147,6 +200,189 @@
           "gridLonDeg": 0.6,
           "gridLatDeg": 0.6
         },
+        "thumbnailData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAoCAYAAACiu5n/AAABUUlEQVRoQ+2ZPw6CMBTG5QLOTsLgRZxMgDh6AOMVCG7GTcIVjAdwNEDi5EUcwMnZExgTSZrKn/Y9oBQfI7S03/f9+mioMfqzy9BRr+lHtyxw55C5k2CIa133oYQlHCekJcxS1pSQlrCekJYwS1lTQlrCekJawixlTZUijRkc6hhmTDTSmMG1EcyKJMHQ2CT6YUwGIQ1NGDNR1g/Me7QXPNsl4/vefokCQoJFnKpCugo3DIplSCtPWEbw1L+sHsHyLGIyCf7+xOMTrqOo8TWsOmESzK0XSlikgDRVpdsoWjzSphdvstA55roGn3BvBdcVG9HPEjhhy48WaeBeixBvA+mfiTLnR1XP6j5Lwgmzgs1tss4O9ikXP3zB3GkdCWaOLlkzLC+epKHzLCLjc4+t0v1CGpgwCeaMo4RLlkYnVVpkx6VjG9BOS0ehqK0lCdbIgTcw+EhWcATDvgAAAABJRU5ErkJggg\u003d\u003d",
+        "disableSafetyLimits": false,
+        "useLiveProcessingIfAvailable": true,
+        "legendPlacement": "OUTER_RIGHT"
+      },
+      "maxDataBytes": 157286400
+    },
+    {
+      "copySelectionFromScript": true,
+      "engineType": "LINO",
+      "def": {
+        "type": "stacked_columns",
+        "variant": "stacked_100",
+        "name": "Count by subreddit and lda_topic",
+        "userEditedName": false,
+        "genericDimension0": [
+          {
+            "column": "subreddit",
+            "type": "ALPHANUM",
+            "numParams": {
+              "emptyBinsMode": "ZEROS"
+            },
+            "maxValues": 20,
+            "generateOthersCategory": true,
+            "oneTickPerBin": false,
+            "filters": [],
+            "isA": "dimension",
+            "possibleSorts": [
+              {
+                "type": "NATURAL",
+                "label": "Natural ordering",
+                "sortAscending": true
+              },
+              {
+                "type": "AGGREGATION",
+                "measureIdx": 0,
+                "label": "Count of records, descending"
+              },
+              {
+                "type": "AGGREGATION",
+                "measureIdx": 0,
+                "label": "Count of records, ascending",
+                "sortAscending": true
+              }
+            ],
+            "sort": {
+              "type": "NATURAL",
+              "label": "Natural ordering",
+              "sortAscending": true
+            }
+          }
+        ],
+        "genericDimension1": [
+          {
+            "column": "lda_topic",
+            "type": "NUMERICAL",
+            "numParams": {
+              "mode": "NONE",
+              "nbBins": 5,
+              "binSize": 100,
+              "emptyBinsMode": "ZEROS"
+            },
+            "maxValues": 100,
+            "generateOthersCategory": true,
+            "oneTickPerBin": false,
+            "filters": [],
+            "isA": "dimension",
+            "possibleSorts": [
+              {
+                "type": "NATURAL",
+                "label": "Natural ordering",
+                "sortAscending": true
+              },
+              {
+                "type": "AGGREGATION",
+                "measureIdx": 0,
+                "label": "Count of records, descending"
+              },
+              {
+                "type": "AGGREGATION",
+                "measureIdx": 0,
+                "label": "Count of records, ascending",
+                "sortAscending": true
+              }
+            ],
+            "sort": {
+              "type": "NATURAL",
+              "label": "Natural ordering",
+              "sortAscending": true
+            }
+          }
+        ],
+        "facetDimension": [],
+        "animationDimension": [],
+        "genericMeasures": [
+          {
+            "function": "COUNT",
+            "type": "NUMERICAL",
+            "displayed": true,
+            "isA": "measure",
+            "displayAxis": "axis1",
+            "displayType": "column",
+            "computeMode": "NORMAL",
+            "computeModeDim": 0
+          }
+        ],
+        "xDimension": [],
+        "yDimension": [],
+        "uaXDimension": [],
+        "uaYDimension": [],
+        "uaSize": [],
+        "uaShape": [],
+        "uaColor": [],
+        "uaTooltip": [],
+        "groupDimension": [],
+        "xMeasure": [],
+        "yMeasure": [],
+        "colorMeasure": [],
+        "sizeMeasure": [],
+        "geometry": [],
+        "tooltipMeasures": [],
+        "boxplotBreakdownDim": [],
+        "boxplotValue": [],
+        "filters": [],
+        "axis1LogScale": false,
+        "axis2LogScale": false,
+        "includeZero": true,
+        "smoothing": true,
+        "showLegend": true,
+        "showXAxis": false,
+        "showInChartValues": false,
+        "showInChartLabels": true,
+        "strokeWidth": 1,
+        "fillOpacity": 0.6,
+        "showXAxisLabel": true,
+        "showYAxisLabel": true,
+        "hexbinRadius": 20,
+        "hexbinNumber": 20,
+        "hexbinRadiusMode": "NUM_HEXAGONS",
+        "chartHeight": 200,
+        "singleXAxis": true,
+        "multiTooltips": false,
+        "animationFrameDuration": 3000,
+        "animationRepeat": true,
+        "colorOptions": {
+          "singleColor": "#2678B1",
+          "transparency": 0.8,
+          "colorPalette": "dku_dss_next",
+          "ccScaleMode": "NORMAL",
+          "customPalette": {
+            "id": "__dku_custom__",
+            "name": "Custom Palette",
+            "colors": [],
+            "values": [],
+            "fixedValues": false
+          },
+          "paletteType": "CONTINUOUS",
+          "quantizationMode": "NONE",
+          "numQuantizeSteps": 5,
+          "paletteMiddleValue": 0.0
+        },
+        "bubblesOptions": {
+          "defaultRadius": 5.0,
+          "singleShape": "FILLED_CIRCLE"
+        },
+        "xAxisMode": "NORMAL",
+        "yAxisMode": "NORMAL",
+        "pieOptions": {
+          "donutHoleSize": 54.0
+        },
+        "scatterOptions": {
+          "equalScales": false,
+          "identityLine": false
+        },
+        "mapOptions": {
+          "tilesLayer": "cartodb-positron",
+          "lockSquareGrid": false
+        },
+        "mapGridOptions": {
+          "gridLonDeg": 0.5,
+          "gridLatDeg": 0.5
+        },
+        "thumbnailData": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAoCAYAAACiu5n/AAACU0lEQVRoQ+2YQSgEURjHZ0qKohQHJ6U2nEgrsptyEEW2KHLhIuWgLW3h4uCC2tSelFy4iKJWFDmQdkX2wAltKScHSlEOUquRmbZ8ve+/vbfTzu7s8ds37/t+//837715ulZgP13EW927maD+fz4c9ZpxZEzEs0LOE0xOW/MgY5Bci/WROFXz3H3QZ8RtAb6t6CSBG99OlQNzwuUdMCeuEJhTy2gRpM3eZ7ykw+XLCcthrlA0FzePLcCpmIcE1v1JCxgZg4grBcw9jKqOwGh7SVIUbcCT0XvOdZPQ4YID5tQyHEbe83C8g3Qv5Du33EMcRgzgahY6zD1sACNFOAb4M9y0TW3ipaGbYTOeV8Cq2sxOh7kFUtjSLrDZx2lbRa61tP9o9d9Zukj7LjnrmWpmz9KIw8jCVrN/fEmtBU/93W1WHNiHEXG5mqVb+mPWG6NgypYSfiseHaEPFYGtjLYlRNysA3MJDOiXsdYDSpSqjau+TERRsfhJO4wAQ84o6gKuHnlgoFBuq0BPbMVrk1GqU74mVgPoWiANjHzBqAJGcmXdYaSI14uGE8qZyva7LjOOnMmRXHLAQLsiRSCLDQKMjNGYmm254lEFDO3DhQbMdZz0Fc967cIO9X6OP84PmXE7HebaXhoYaTMX+M/69BsP5HCCiJsTDuu7D9dU26cG61rMuCpgThTpSzwuwS8Q8CWkCpibx5Y7LReYuEjgnEEvDLl5HOUwB2OIwo0RAiOHfi4B+g6rysXNI/5aopZWh8dcYIcbyJbvOsxK5PABrsMON5At/wfOkddHdLwqhwAAAABJRU5ErkJggg\u003d\u003d",
         "disableSafetyLimits": false,
         "useLiveProcessingIfAvailable": true,
         "legendPlacement": "OUTER_RIGHT"
