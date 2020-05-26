@@ -9,8 +9,8 @@
             "box": {
               "top": 0,
               "left": 0,
-              "width": 2,
-              "height": 2
+              "width": 7,
+              "height": 6
             },
             "clickAction": "OPEN_INSIGHT",
             "tileParams": {
@@ -22,6 +22,7 @@
             },
             "autoLoad": true,
             "showTitle": "YES",
+            "title": "Average Score per LDA Topic",
             "insightId": "bJqmLcu",
             "insightType": "chart",
             "displayMode": "INSIGHT",
@@ -45,6 +46,7 @@
             },
             "autoLoad": true,
             "showTitle": "YES",
+            "title": "Topic Distributions by Subreddits",
             "insightId": "HlhSz7J",
             "insightType": "chart",
             "displayMode": "INSIGHT",
@@ -60,11 +62,11 @@
   "name": "Identifying Toxicity Using Reddit Posts\u0027s default dashboard",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 5,
+    "versionNumber": 6,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590525605647
+    "lastModifiedOn": 1590525645460
   },
   "creationTag": {
     "versionNumber": 0,
