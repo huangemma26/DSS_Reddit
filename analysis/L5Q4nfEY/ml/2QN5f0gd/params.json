@@ -1260,7 +1260,7 @@
     "plugin_python": {},
     "keras": {
       "epochs": 10,
-      "batchSize": 32,
+      "batchSize": 256,
       "trainOnAllData": true,
       "stepsPerEpoch": 100,
       "shuffleData": true,
@@ -1276,7 +1276,7 @@
         "main",
         "text_preprocessed"
       ],
-      "buildCode": "input_text_preprocessed \u003d Input(shape\u003d(300,), name\u003d\"text_preprocessed\")\n\nfrom keras.layers import Embedding, LSTM\nfrom keras.layers import Dense, Input, Flatten\nfrom keras.models import Model\n\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    #### DEFINING THE INPUT\n    # You need to modify the name and length of the \"text_input\" \n    # according to the preprocessing and name of your \n    # initial feature.\n    # This feature should to be preprocessed as a \"Text\", with a \n    # custom preprocessing using the \"TokenizerProcessor\" class\n    text_length \u003d 300\n    vocabulary_size \u003d 10000\n    text_input_name \u003d \"text_preprocessed\"\n\n    text_input \u003d Input(shape\u003d(text_length,), name\u003dtext_input_name)\n\n    #### DEFINING THE ARCHITECTURE\n    emb \u003d Embedding(output_dim\u003d512, input_dim\u003dvocabulary_size, input_length\u003dtext_length)(text_input)\n    lstm_out \u003d LSTM(128)(emb)\n    \n    x \u003d Dense(128, activation\u003d\u0027sig\u0027)(lstm_out)\n    x \u003d Dense(64, activation\u003d\u0027relu\u0027)(x)\n    predictions \u003d Dense(n_classes, activation\u003d\u0027sigmoid\u0027)(x)\n\n    model \u003d Model(inputs\u003dtext_input, outputs\u003dpredictions)\n\n    return model\n\ndef compile_model(model):\n    model.compile(\n        optimizer\u003d\"rmsprop\",\n        loss\u003d\"categorical_crossentropy\"\n    )\n    return model"
+      "buildCode": "input_text_preprocessed \u003d Input(shape\u003d(300,), name\u003d\"text_preprocessed\")\n\nfrom keras.layers import Embedding, LSTM\nfrom keras.layers import Dense, Input, Flatten\nfrom keras.models import Model\n\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    #### DEFINING THE INPUT\n    # You need to modify the name and length of the \"text_input\" \n    # according to the preprocessing and name of your \n    # initial feature.\n    # This feature should to be preprocessed as a \"Text\", with a \n    # custom preprocessing using the \"TokenizerProcessor\" class\n    text_length \u003d 300\n    vocabulary_size \u003d 10000\n    text_input_name \u003d \"text_preprocessed\"\n\n    text_input \u003d Input(shape\u003d(text_length,), name\u003dtext_input_name)\n\n    #### DEFINING THE ARCHITECTURE\n    emb \u003d Embedding(output_dim\u003d512, input_dim\u003dvocabulary_size, input_length\u003dtext_length)(text_input)\n    lstm_out \u003d LSTM(128)(emb)\n    \n    x \u003d Dense(128, activation\u003d\u0027sig\u0027)(lstm_out)\n    x \u003d Dense(64, activation\u003d\u0027relu\u0027)(x)\n    predictions \u003d Dense(n_classes, activation\u003d\u0027sigmoid\u0027)(x)\n\n    model \u003d Model(inputs\u003dtext_input, outputs\u003dpredictions)\n\n    return model\n\ndef compile_model(model):\n    model.compile(\n        optimizer\u003d\"adam\",\n        loss\u003d\"bianry_crossentropy\"\n    )\n    return model"
     },
     "grid_search": true,
     "gridSearchParams": {
