@@ -59,11 +59,11 @@
     "dimensions": []
   },
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590526424834
+    "lastModifiedOn": 1590526965183
   },
   "creationTag": {
     "versionNumber": 0,
@@ -93,6 +93,10 @@
       {
         "name": "subreddit",
         "type": "string"
+      },
+      {
+        "name": "sexist(sub)",
+        "type": "bigint"
       },
       {
         "name": "num_comments",
@@ -128,6 +132,10 @@
       },
       {
         "name": "lda_topic",
+        "type": "bigint"
+      },
+      {
+        "name": "sexist(topic)",
         "type": "bigint"
       }
     ],
