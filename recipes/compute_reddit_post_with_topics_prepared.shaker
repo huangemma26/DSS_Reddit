@@ -25,8 +25,34 @@
     "autoRefreshSample": false
   },
   "explorationFilters": [],
-  "exploreUIParams": {},
-  "steps": [],
+  "origin": "PREPARE_RECIPE",
+  "exploreUIParams": {
+    "autoRefresh": true
+  },
+  "steps": [
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(or(lda_topic\u003d\u003d14, lda_topic\u003d\u003d12,lda_topic\u003d\u003d4,lda_topic\u003d\u003d6), 1, 0)",
+        "column": "sexist(topic)"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(or(subreddit\u003d\u003d\"Incels\", subreddit\u003d\u003d\"TheRedPill\"), 1, 0)",
+        "column": "sexist(sub)"
+      },
+      "alwaysShowComment": false
+    }
+  ],
   "maxProcessedMemTableBytes": -1,
   "previewMode": "ALL_ROWS",
   "vizSampling": {
@@ -34,7 +60,21 @@
     "autoRefreshSample": false
   },
   "analysisColumnData": {},
-  "columnWidthsByName": {},
+  "columnWidthsByName": {
+    "sexist(sub)": 100,
+    "selftext": 300,
+    "gilded": 100,
+    "text_stemmed": 300,
+    "title": 300,
+    "subreddit": 120,
+    "num_comments": 105,
+    "score": 100,
+    "retrieved_on": 134,
+    "sexist(topic)": 113,
+    "lda_topic": 100,
+    "text": 300,
+    "created_utc": 127
+  },
   "sorting": [],
   "globalSearchQuery": "",
   "coloring": {
