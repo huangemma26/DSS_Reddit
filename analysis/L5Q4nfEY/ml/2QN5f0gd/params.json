@@ -98,7 +98,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -122,7 +122,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "selftext",
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "TEXT",
         "state": {
           "userModified": false,
@@ -131,7 +131,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "selftext_preprocessed"
+        "sendToInput": "main"
       },
       "gilded": {
         "generate_derivative": false,
@@ -143,7 +143,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -167,7 +167,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "text_stemmed",
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "TEXT",
         "state": {
           "userModified": false,
@@ -176,7 +176,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "text_stemmed_preprocessed"
+        "sendToInput": "main"
       },
       "title": {
         "text_handling": "CUSTOM",
@@ -191,7 +191,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "title",
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "TEXT",
         "state": {
           "userModified": false,
@@ -200,7 +200,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "title_preprocessed"
+        "sendToInput": "main"
       },
       "subreddit": {
         "category_handling": "DUMMIFY",
@@ -213,7 +213,7 @@
         "max_cat_safety": 200,
         "nb_bins_hashing": 1048576,
         "dummy_drop": "AUTO",
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "CATEGORY",
         "state": {
           "userModified": false,
@@ -234,7 +234,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -255,7 +255,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -276,7 +276,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -314,7 +314,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -359,7 +359,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -1274,12 +1274,9 @@
       "enabled": true,
       "kerasInputs": [
         "main",
-        "title_preprocessed",
-        "selftext_preprocessed",
-        "text_preprocessed",
-        "text_stemmed_preprocessed"
+        "text_preprocessed"
       ],
-      "buildCode": "from keras.layers import Input, Dense, LSTM, Reshape\nfrom keras.models import Model, Sequential\n\n# Define the keras architecture of your model in \u0027build_model\u0027 and return it. Compilation must be done in \u0027compile_model\u0027.\n#   input_shapes  - dictionary of shapes per input as defined in features handling\n#   n_classes - For classification, number of target classes\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    window_size \u003d 30\n\n    input_main \u003d Input(shape\u003d(window_size,), name\u003d\"inputs_preprocessed\")\n\n    x \u003d Reshape((window_size, 1))(input_main)\n    x \u003d LSTM(100, return_sequences\u003dTrue)(x)\n    x \u003d LSTM(100, return_sequences\u003dFalse)(x)\n\n    predictions \u003d Dense(1)(x)\n\n    # The \u0027inputs\u0027 parameter of your model must contain the\n    # full list of inputs used in the architecture\n    model \u003d Model(inputs\u003d[input_main], outputs\u003dpredictions)\n    \n    return model\n\n# Compile your model and return it\n#   model   - model defined in \u0027build_model\u0027\ndef compile_model(model):\n    \n    # The loss function depends on the type of problem you solve.\n    # \u0027binary_crossentropy\u0027 is appropriate for a binary classification.\n    model.compile(optimizer\u003d\u0027rmsprop\u0027,\n                  loss\u003d\u0027binary_crossentropy\u0027)\n\n    return model"
+      "buildCode": "input_text_preprocessed \u003d Input(shape\u003d(300,), name\u003d\"text_preprocessed\")\nfrom keras.layers import Input, Dense, LSTM, Reshape\nfrom keras.models import Model, Sequential\n\n# Define the keras architecture of your model in \u0027build_model\u0027 and return it. Compilation must be done in \u0027compile_model\u0027.\n#   input_shapes  - dictionary of shapes per input as defined in features handling\n#   n_classes - For classification, number of target classes\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    window_size \u003d 30\n\n    input_main \u003d Input(shape\u003d(window_size,), name\u003d\"inputs_preprocessed\")\n\n    x \u003d Reshape((window_size, 1))(input_main)\n    x \u003d LSTM(100, return_sequences\u003dTrue)(x)\n    x \u003d LSTM(100, return_sequences\u003dFalse)(x)\n\n    predictions \u003d Dense(1)(x)\n\n    # The \u0027inputs\u0027 parameter of your model must contain the\n    # full list of inputs used in the architecture\n    model \u003d Model(inputs\u003d[input_main], outputs\u003dpredictions)\n    \n    return model\n\n# Compile your model and return it\n#   model   - model defined in \u0027build_model\u0027\ndef compile_model(model):\n    \n    # The loss function depends on the type of problem you solve.\n    # \u0027binary_crossentropy\u0027 is appropriate for a binary classification.\n    model.compile(optimizer\u003d\u0027rmsprop\u0027,\n                  loss\u003d\u0027binary_crossentropy\u0027)\n\n    return model"
     },
     "grid_search": true,
     "gridSearchParams": {
