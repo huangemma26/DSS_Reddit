@@ -32,8 +32,8 @@
             "tileType": "INSIGHT",
             "box": {
               "top": 0,
-              "left": 7,
-              "width": 5,
+              "left": 8,
+              "width": 4,
               "height": 6
             },
             "clickAction": "OPEN_INSIGHT",
@@ -57,8 +57,8 @@
             "box": {
               "top": 0,
               "left": 3,
-              "width": 4,
-              "height": 5
+              "width": 5,
+              "height": 6
             },
             "clickAction": "DO_NOTHING",
             "tileParams": {
@@ -81,11 +81,11 @@
   "name": "Identifying Toxicity Using Reddit Posts\u0027s default dashboard",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 12,
+    "versionNumber": 13,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590529537524
+    "lastModifiedOn": 1590529593474
   },
   "creationTag": {
     "versionNumber": 0,
