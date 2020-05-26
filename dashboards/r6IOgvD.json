@@ -9,8 +9,8 @@
             "box": {
               "top": 0,
               "left": 0,
-              "width": 7,
-              "height": 6
+              "width": 3,
+              "height": 5
             },
             "clickAction": "OPEN_INSIGHT",
             "tileParams": {
@@ -55,13 +55,14 @@
           {
             "tileType": "TEXT",
             "box": {
-              "top": 6,
-              "left": 0,
-              "width": 2,
-              "height": 2
+              "top": 0,
+              "left": 3,
+              "width": 4,
+              "height": 5
             },
             "clickAction": "DO_NOTHING",
             "tileParams": {
+              "text": "Topics\n    \u0027Car Legal Issues\u0027: \u0027topic #0\u0027,\n    \u0027Apartment Legal Issues\u0027: \u0027topic #1\u0027,\n    \u0027Family\u0027: \u0027topic #2\u0027,\n    \u0027Questions\u0027: \u0027topic #3\u0027,\n    \u0027Sexual Relationships\u0027: \u0027topic #4\u0027,\n    \u0027Dating (Short Term)\u0027: \u0027topic #5\u0027,\n    \u0027Future Family Plans\u0027: \u0027topic #6\u0027,\n    \u0027Spouse Relationships\u0027: \u0027topic #7\u0027,\n    \u0027Future Plans\u0027: \u0027topic #8\u0027,\n    \u0027Work Issues\u0027: \u0027topic #9\u0027,\n    \u0027Divorce\u0027: \u0027topic #10\u0027,\n    \u0027Other\u0027: \u0027topic #11\u0027,\n    \u0027Social/Social Media\u0027: \u0027topic #12\u0027,\n    \u0027Texting\u0027: \u0027topic #13\u0027,\n    \u0027Teen Problems\u0027: \u0027topic #14\u0027",
               "textAlign": "LEFT",
               "isTransparent": false
             },
@@ -80,11 +81,11 @@
   "name": "Identifying Toxicity Using Reddit Posts\u0027s default dashboard",
   "showGrid": true,
   "versionTag": {
-    "versionNumber": 9,
+    "versionNumber": 10,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590525729761
+    "lastModifiedOn": 1590525818466
   },
   "creationTag": {
     "versionNumber": 0,
