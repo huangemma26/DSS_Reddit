@@ -181,11 +181,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 7,
+    "versionNumber": 11,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590525523218
+    "lastModifiedOn": 1590611927644
   },
   "creationTag": {
     "versionNumber": 0,
@@ -205,14 +205,14 @@
         "createdOn": 0,
         "items": [
           {
-            "done": false,
+            "done": true,
             "text": "Clean Data",
             "createdOn": 1590272050933,
             "createdBy": "admin",
             "stateChangedOn": 0
           },
           {
-            "done": false,
+            "done": true,
             "text": "Topic Models",
             "createdOn": 1590272066668,
             "createdBy": "admin",
