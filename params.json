@@ -181,11 +181,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 11,
+    "versionNumber": 12,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590611927644
+    "lastModifiedOn": 1590612377550
   },
   "creationTag": {
     "versionNumber": 0,
@@ -236,6 +236,13 @@
             "done": false,
             "text": "Train model on Google Big Query",
             "createdOn": 1590272097765,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          },
+          {
+            "done": false,
+            "text": "look at results with new data and see what model predicts",
+            "createdOn": 1590612377431,
             "createdBy": "admin",
             "stateChangedOn": 0
           }
