@@ -1,6 +1,6 @@
 {
   "predictionType": "BINARY_CLASSIFICATION",
-  "targetVariable": "sexist(sub)",
+  "targetVariable": "sexist(topic)",
   "weight": {
     "weightMethod": "NO_WEIGHTING"
   },
@@ -77,12 +77,12 @@
       {
         "sourceValue": "0",
         "mappedValue": 0,
-        "sampleFreq": 5979
+        "sampleFreq": 6287
       },
       {
         "sourceValue": "1",
         "mappedValue": 1,
-        "sampleFreq": 3708
+        "sampleFreq": 3400
       }
     ],
     "preprocessingFitSampleRatio": 1.0,
@@ -90,11 +90,15 @@
     "per_feature": {
       "sexist(sub)": {
         "generate_derivative": false,
+        "numerical_handling": "REGULAR",
+        "missing_handling": "IMPUTE",
+        "missing_impute_with": "MEAN",
         "impute_constant_value": 0.0,
+        "rescaling": "AVGSTD",
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "TARGET",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -285,15 +289,11 @@
       },
       "sexist(topic)": {
         "generate_derivative": false,
-        "numerical_handling": "REGULAR",
-        "missing_handling": "IMPUTE",
-        "missing_impute_with": "MEAN",
         "impute_constant_value": 0.0,
-        "rescaling": "AVGSTD",
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "TARGET",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
