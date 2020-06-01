@@ -60,11 +60,6 @@ df['lda_topic'] = lda_topic
 
 
 
-
-
-reddit_posts_predict_topics_df = reddit_posts_predict_df # For this sample code, simply copy input to output
-
-
 # Write recipe outputs
 reddit_posts_predict_topics = dataiku.Dataset("reddit_posts_predict_topics")
-reddit_posts_predict_topics.write_with_schema(reddit_posts_predict_topics_df)
+reddit_posts_predict_topics.write_with_schema(df)
