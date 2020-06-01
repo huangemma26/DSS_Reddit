@@ -8,7 +8,6 @@ from sklearn.feature_extraction import text
 
 from sklearn.decomposition import LatentDirichletAllocation,NMF
 import pyLDAvis.sklearn
-pyLDAvis.enable_notebook()
 
 mydataset = dataiku.Dataset("reddit_posts_predict")
 df = mydataset.get_dataframe()
