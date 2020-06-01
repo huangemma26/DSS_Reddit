@@ -1,0 +1,325 @@
+{
+  "columnsSelection": {
+    "mode": "ALL"
+  },
+  "explorationSampling": {
+    "_refreshTrigger": 1,
+    "selection": {
+      "filter": {
+        "distinct": false,
+        "enabled": false
+      },
+      "latestPartitionsN": 1,
+      "maxRecords": 1000000,
+      "ordering": {
+        "rules": [],
+        "enabled": false
+      },
+      "withinFirstN": -1,
+      "partitionSelectionMethod": "ALL",
+      "maxStoredBytes": -1,
+      "targetRatio": 0.02,
+      "maxReadUncompressedBytes": -1,
+      "samplingMethod": "HEAD_SEQUENTIAL"
+    },
+    "autoRefreshSample": false
+  },
+  "explorationFilters": [],
+  "origin": "PREPARE_RECIPE",
+  "exploreUIParams": {
+    "autoRefresh": true
+  },
+  "steps": [
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "FilterOnValue",
+      "params": {
+        "normalizationMode": "EXACT",
+        "booleanMode": "AND",
+        "columns": [
+          "subreddit"
+        ],
+        "values": [
+          "sex",
+          "Christianity",
+          "datascience"
+        ],
+        "matchingMode": "FULL_STRING",
+        "action": "REMOVE_ROW",
+        "appliesTo": "SINGLE_COLUMN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "RemoveRowsOnEmpty",
+      "params": {
+        "columns": [
+          "selftext"
+        ],
+        "keep": false,
+        "appliesTo": "SINGLE_COLUMN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "FilterOnValue",
+      "params": {
+        "normalizationMode": "EXACT",
+        "booleanMode": "AND",
+        "columns": [
+          "selftext"
+        ],
+        "values": [
+          "[removed]",
+          "[deleted]",
+          "Every week we post our Pet Theories and Ideas Megathread and invite you to share the new theories you\u0027ve been developing while out in the field. Have you noticed any strange trends that you either haven\u0027t understood or have a pet theory about? Have you noticed something new or different that we haven\u0027t discussed? Are there any ideas that you\u0027ve been formulating that wouldn\u0027t warrent a new post but you want to share/discuss? Do it here.",
+          "How have you improved this week? In what ways did you take steps to get closer to your goals? In which ways did you fail? In which ways did you succeed. This is the thread to keep you accountable. Post weekly. Stay the course. Every Friday.",
+          "This is our weekly askTRP megathread where no question is off limits as long as it\u0027s TRP related. Ask your questions and members who have been around longer can chime in and let us know what they think. As always, if you\u0027re brand new here, please make sure you\u0027ve read the sidebar."
+        ],
+        "matchingMode": "FULL_STRING",
+        "action": "REMOVE_ROW",
+        "appliesTo": "SINGLE_COLUMN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if (length(selftext) \u003e 300, selftext, 0)",
+        "column": "selftext"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "FilterOnValue",
+      "params": {
+        "normalizationMode": "EXACT",
+        "booleanMode": "AND",
+        "columns": [
+          "selftext"
+        ],
+        "values": [
+          "0"
+        ],
+        "matchingMode": "FULL_STRING",
+        "action": "REMOVE_ROW",
+        "appliesTo": "SINGLE_COLUMN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "ColumnsSelector",
+      "params": {
+        "columns": [
+          "author",
+          "domain",
+          "url",
+          "ups",
+          "downs",
+          "saved",
+          "id",
+          "from_kind",
+          "from",
+          "over_18",
+          "thumbnail",
+          "subreddit_id",
+          "hide_score",
+          "author_flair_css_class",
+          "archived",
+          "is_self",
+          "from_id",
+          "permalink",
+          "name",
+          "author_flair_text",
+          "quarantine",
+          "link_flair_css_class",
+          "link_flair_text",
+          "distinguished"
+        ],
+        "keep": false,
+        "appliesTo": "COLUMNS"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "FilterOnValue",
+      "params": {
+        "normalizationMode": "EXACT",
+        "booleanMode": "AND",
+        "columns": [
+          "stickied"
+        ],
+        "values": [
+          "true",
+          "TRUE"
+        ],
+        "matchingMode": "FULL_STRING",
+        "action": "REMOVE_ROW",
+        "appliesTo": "SINGLE_COLUMN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "ColumnsSelector",
+      "params": {
+        "columns": [
+          "stickied"
+        ],
+        "keep": false,
+        "appliesTo": "COLUMNS"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "FindReplace",
+      "params": {
+        "output": "",
+        "mapping": [
+          {
+            "from": "http\\S+",
+            "to": ""
+          },
+          {
+            "from": "www\\S+",
+            "to": ""
+          }
+        ],
+        "normalization": "EXACT",
+        "columns": [
+          "selftext"
+        ],
+        "appliesTo": "SINGLE_COLUMN",
+        "stopAfterFirstMatch": false,
+        "matching": "PATTERN"
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "TextSimplifierProcessor",
+      "params": {
+        "inCol": "selftext",
+        "outCol": "text_stemmed",
+        "sortAlphabetically": false,
+        "normalize": true,
+        "language": "english",
+        "clearStopWords": true,
+        "stem": true
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "TextSimplifierProcessor",
+      "params": {
+        "inCol": "selftext",
+        "outCol": "text",
+        "sortAlphabetically": false,
+        "normalize": true,
+        "language": "english",
+        "clearStopWords": true,
+        "stem": false
+      },
+      "alwaysShowComment": false
+    },
+    {
+      "preview": false,
+      "metaType": "PROCESSOR",
+      "disabled": false,
+      "type": "RemoveRowsOnEmpty",
+      "params": {
+        "columns": [
+          "text"
+        ],
+        "keep": false,
+        "appliesTo": "SINGLE_COLUMN"
+      },
+      "alwaysShowComment": false
+    }
+  ],
+  "maxProcessedMemTableBytes": -1,
+  "previewMode": "ALL_ROWS",
+  "vizSampling": {
+    "_refreshTrigger": 0,
+    "autoRefreshSample": false
+  },
+  "analysisColumnData": {},
+  "columnWidthsByName": {
+    "author_flair_css_class": 180,
+    "from_kind": 100,
+    "from_id": 100,
+    "gilded": 100,
+    "saved": 100,
+    "over_18": 100,
+    "hide_score": 100,
+    "text_stemmed": 300,
+    "title": 300,
+    "subreddit": 113,
+    "subreddit_id": 134,
+    "author_flair_text": 155,
+    "num_comments": 105,
+    "score": 100,
+    "archived": 100,
+    "from": 100,
+    "id": 100,
+    "text": 300,
+    "created_utc": 127,
+    "is_self": 100,
+    "link_flair_css_class": 165,
+    "selftext": 300,
+    "thumbnail": 100,
+    "link_flair_text": 148,
+    "cleantext": 300,
+    "downs": 100,
+    "test": 300,
+    "author": 155,
+    "newcolumn_expression": 165,
+    "distinguished": 113,
+    "url": 300,
+    "stickied": 100,
+    "domain": 148,
+    "retrieved_on": 134,
+    "name": 100,
+    "ups": 100,
+    "cleaned": 300,
+    "quarantine": 100,
+    "permalink": 300
+  },
+  "sorting": [],
+  "globalSearchQuery": "",
+  "coloring": {
+    "scheme": "MEANING_AND_STATUS",
+    "individualColumns": [],
+    "valueColoringMode": "HASH"
+  }
+}
