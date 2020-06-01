@@ -59,11 +59,11 @@
     "dimensions": []
   },
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1591046623362
+    "lastModifiedOn": 1591048231442
   },
   "creationTag": {
     "versionNumber": 0,
@@ -85,8 +85,53 @@
     }
   },
   "schema": {
-    "columns": [],
-    "userModified": true
+    "columns": [
+      {
+        "name": "created_utc",
+        "type": "bigint"
+      },
+      {
+        "name": "subreddit",
+        "type": "string"
+      },
+      {
+        "name": "num_comments",
+        "type": "bigint"
+      },
+      {
+        "name": "score",
+        "type": "double"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "selftext",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "text_stemmed",
+        "type": "string"
+      },
+      {
+        "name": "gilded",
+        "type": "bigint"
+      },
+      {
+        "name": "retrieved_on",
+        "type": "bigint"
+      },
+      {
+        "name": "lda_topic",
+        "type": "bigint"
+      }
+    ],
+    "userModified": false
   },
   "metrics": {
     "probes": [
