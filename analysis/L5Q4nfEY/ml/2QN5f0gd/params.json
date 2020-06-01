@@ -1,6 +1,6 @@
 {
   "predictionType": "BINARY_CLASSIFICATION",
-  "targetVariable": "sexist(sub)",
+  "targetVariable": "sexist(topic)",
   "weight": {
     "weightMethod": "NO_WEIGHTING"
   },
@@ -77,12 +77,12 @@
       {
         "sourceValue": "0",
         "mappedValue": 0,
-        "sampleFreq": 5979
+        "sampleFreq": 6287
       },
       {
         "sourceValue": "1",
         "mappedValue": 1,
-        "sampleFreq": 3708
+        "sampleFreq": 3400
       }
     ],
     "preprocessingFitSampleRatio": 1.0,
@@ -90,11 +90,15 @@
     "per_feature": {
       "sexist(sub)": {
         "generate_derivative": false,
+        "numerical_handling": "REGULAR",
+        "missing_handling": "IMPUTE",
+        "missing_impute_with": "MEAN",
         "impute_constant_value": 0.0,
+        "rescaling": "AVGSTD",
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "TARGET",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -118,7 +122,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "selftext",
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "TEXT",
         "state": {
           "userModified": false,
@@ -127,7 +131,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "main"
+        "sendToInput": "selftext_preprocessed"
       },
       "gilded": {
         "generate_derivative": false,
@@ -139,7 +143,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -166,11 +170,11 @@
         "role": "INPUT",
         "type": "TEXT",
         "state": {
-          "userModified": true,
+          "userModified": false,
           "autoModifiedByDSS": false,
           "recordedMeaning": "FreeText"
         },
-        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d300)",
+        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
         "sendToInput": "text_stemmed_preprocessed"
       },
@@ -187,7 +191,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "title",
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "TEXT",
         "state": {
           "userModified": false,
@@ -196,7 +200,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "main"
+        "sendToInput": "title_preprocessed"
       },
       "subreddit": {
         "category_handling": "DUMMIFY",
@@ -209,7 +213,7 @@
         "max_cat_safety": 200,
         "nb_bins_hashing": 1048576,
         "dummy_drop": "AUTO",
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "CATEGORY",
         "state": {
           "userModified": false,
@@ -230,7 +234,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -251,7 +255,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -272,7 +276,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -285,15 +289,11 @@
       },
       "sexist(topic)": {
         "generate_derivative": false,
-        "numerical_handling": "REGULAR",
-        "missing_handling": "IMPUTE",
-        "missing_impute_with": "MEAN",
         "impute_constant_value": 0.0,
-        "rescaling": "AVGSTD",
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "INPUT",
+        "role": "TARGET",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -314,7 +314,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -338,16 +338,16 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "text",
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "TEXT",
         "state": {
-          "userModified": true,
+          "userModified": false,
           "autoModifiedByDSS": false,
           "recordedMeaning": "FreeText"
         },
-        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d300)",
+        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "main"
+        "sendToInput": "text_preprocessed"
       },
       "created_utc": {
         "generate_derivative": false,
@@ -359,7 +359,7 @@
         "quantile_bin_nb_bins": 4,
         "binarize_threshold_mode": "MEDIAN",
         "binarize_constant_threshold": 0.0,
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "NUMERIC",
         "state": {
           "userModified": false,
@@ -1260,7 +1260,7 @@
     "plugin_python": {},
     "keras": {
       "epochs": 10,
-      "batchSize": 256,
+      "batchSize": 32,
       "trainOnAllData": true,
       "stepsPerEpoch": 100,
       "shuffleData": true,
@@ -1274,9 +1274,11 @@
       "enabled": true,
       "kerasInputs": [
         "main",
+        "title_preprocessed",
+        "selftext_preprocessed",
+        "text_preprocessed",
         "text_stemmed_preprocessed"
-      ],
-      "buildCode": "from keras.layers import Embedding, LSTM\nfrom keras.layers import Dense, Input, Flatten\nfrom keras.models import Model\n\n\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    #### DEFINING THE INPUT\n    # You need to modify the name and length of the \"text_input\" \n    # according to the preprocessing and name of your \n    # initial feature.\n    # This feature should to be preprocessed as a \"Text\", with a \n    # custom preprocessing using the \"TokenizerProcessor\" class\n    text_length \u003d 300\n    vocabulary_size \u003d 10000\n    text_input_name \u003d \"text_stemmed_preprocessed\"\n\n    text_input \u003d Input(shape\u003d(text_length,), name\u003dtext_input_name)\n\n    #### DEFINING THE ARCHITECTURE\n    emb \u003d Embedding(output_dim\u003d512, input_dim\u003dvocabulary_size, input_length\u003dtext_length)(text_input)\n    lstm_out \u003d LSTM(128)(emb)\n    \n    x \u003d Dense(128, activation\u003d\u0027relu\u0027)(lstm_out)\n    x \u003d Dense(64, activation\u003d\u0027relu\u0027)(x)\n    predictions \u003d Dense(n_classes, activation\u003d\u0027sigmoid\u0027)(x)\n\n    model \u003d Model(inputs\u003dtext_input, outputs\u003dpredictions)\n\n    return model\n\ndef compile_model(model):\n    model.compile(\n        optimizer\u003d\"adam\",\n        loss\u003d\"categorical_crossentropy\"\n    )\n    return model"
+      ]
     },
     "grid_search": true,
     "gridSearchParams": {
