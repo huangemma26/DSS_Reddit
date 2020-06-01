@@ -1,0 +1,627 @@
+{
+  "envSelection": {
+    "envName": "Tensorflow",
+    "envMode": "EXPLICIT_ENV"
+  },
+  "modeling": {
+    "computeLearningCurves": false,
+    "max_ensemble_nodes_serialized": 0,
+    "pluginAlgoCustomGridSearch": false,
+    "keras": {
+      "perGPUMemoryFraction": 0.5,
+      "stepsPerEpoch": 100,
+      "shuffleData": true,
+      "buildCode": "from keras.layers import Embedding, LSTM\nfrom keras.layers import Dense, Input, Flatten\nfrom keras.models import Model\n\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    #### DEFINING THE INPUT\n    # You need to modify the name and length of the \"text_input\" \n    # according to the preprocessing and name of your \n    # initial feature.\n    # This feature should to be preprocessed as a \"Text\", with a \n    # custom preprocessing using the \"TokenizerProcessor\" class\n    text_length \u003d 300\n    vocabulary_size \u003d 10000\n    text_input_name \u003d \"text_preprocessed\"\n\n    text_input \u003d Input(shape\u003d(text_length,), name\u003dtext_input_name)\n\n    #### DEFINING THE ARCHITECTURE\n    emb \u003d Embedding(output_dim\u003d512, input_dim\u003dvocabulary_size, input_length\u003dtext_length)(text_input)\n    lstm_out \u003d LSTM(128)(emb)\n    \n    x \u003d Dense(128, activation\u003d\u0027relu\u0027)(lstm_out)\n    x \u003d Dense(64, activation\u003d\u0027relu\u0027)(x)\n    predictions \u003d Dense(n_classes, activation\u003d\u0027sigmoid\u0027)(x)\n\n    model \u003d Model(inputs\u003dtext_input, outputs\u003dpredictions)\n\n    return model\n\ndef compile_model(model):\n    model.compile(\n        optimizer\u003d\"adam\",\n        loss\u003d\"categorical_crossentropy\"\n    )\n    return model",
+      "enabled": true,
+      "useGPU": false,
+      "kerasInputs": [
+        "main",
+        "text_preprocessed"
+      ],
+      "advancedFitMode": false,
+      "trainOnAllData": true,
+      "gpuAllowGrowth": false,
+      "batchSize": 256,
+      "epochs": 10,
+      "gpuList": [
+        0
+      ]
+    },
+    "metrics": {
+      "customEvaluationMetricGIB": true,
+      "costMatrixWeights": {
+        "fpGain": -0.3,
+        "tpGain": 1.0,
+        "fnGain": 0.0,
+        "tnGain": 0.0
+      },
+      "liftPoint": 0.4,
+      "evaluationMetric": "ROC_AUC",
+      "customEvaluationMetricNeedsProba": false,
+      "thresholdOptimizationMetric": "F1"
+    },
+    "autoOptimizeThreshold": true,
+    "forcedClassifierThreshold": 0.0,
+    "grid_search_params": {
+      "mode": "KFOLD",
+      "nJobs": 4,
+      "nFolds": 3,
+      "nIter": 0,
+      "stratified": true,
+      "strategy": "GRID",
+      "shuffleIterations": 1,
+      "randomized": true,
+      "splitRatio": 0.8,
+      "timeout": 0
+    },
+    "skipExpensiveReports": false,
+    "algorithm": "KERAS_CODE",
+    "gridLength": 10
+  },
+  "generatingModelId": "A-TOXICREDDIT-L5Q4nfEY-2QN5f0gd-s7-pp1-m1",
+  "preprocessing": {
+    "reduce": {
+      "kept_variance": 0.0,
+      "enabled": false
+    },
+    "target_remapping": [
+      {
+        "sampleFreq": 6287,
+        "mappedValue": 0,
+        "sourceValue": "0"
+      },
+      {
+        "sampleFreq": 3400,
+        "mappedValue": 1,
+        "sourceValue": "1"
+      }
+    ],
+    "per_feature": {
+      "sexist(sub)": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      },
+      "selftext": {
+        "hashSVDHashSize": 200000,
+        "minRowsRatio": 0.001,
+        "text_handling": "CUSTOM",
+        "ngramMaxSize": 1,
+        "role": "REJECT",
+        "stopWordsMode": "NONE",
+        "maxWords": 0,
+        "useCustomVectorizer": false,
+        "sendToInput": "main",
+        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
+        "type": "TEXT",
+        "customProcessorWantsMatrix": false,
+        "ngramMinSize": 1,
+        "maxRowsRatio": 0.8,
+        "hashSVDSVDComponents": 100,
+        "name": "selftext",
+        "hashSVDSVDLimit": 50000,
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "FreeText",
+          "userModified": false
+        }
+      },
+      "gilded": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      },
+      "text_stemmed": {
+        "hashSVDHashSize": 200000,
+        "minRowsRatio": 0.001,
+        "text_handling": "CUSTOM",
+        "ngramMaxSize": 1,
+        "role": "REJECT",
+        "stopWordsMode": "NONE",
+        "maxWords": 0,
+        "useCustomVectorizer": false,
+        "sendToInput": "main",
+        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
+        "type": "TEXT",
+        "customProcessorWantsMatrix": false,
+        "ngramMinSize": 1,
+        "maxRowsRatio": 0.8,
+        "hashSVDSVDComponents": 100,
+        "name": "text_stemmed",
+        "hashSVDSVDLimit": 50000,
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "FreeText",
+          "userModified": false
+        }
+      },
+      "title": {
+        "hashSVDHashSize": 200000,
+        "minRowsRatio": 0.001,
+        "text_handling": "CUSTOM",
+        "ngramMaxSize": 1,
+        "role": "REJECT",
+        "stopWordsMode": "NONE",
+        "maxWords": 0,
+        "useCustomVectorizer": false,
+        "sendToInput": "main",
+        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
+        "type": "TEXT",
+        "customProcessorWantsMatrix": false,
+        "ngramMinSize": 1,
+        "maxRowsRatio": 0.8,
+        "hashSVDSVDComponents": 100,
+        "name": "title",
+        "hashSVDSVDLimit": 50000,
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "FreeText",
+          "userModified": false
+        }
+      },
+      "subreddit": {
+        "nb_bins_hashing": 1048576,
+        "min_samples": 10,
+        "missing_impute_with": "MODE",
+        "role": "REJECT",
+        "dummy_drop": "NONE",
+        "dummy_clip": "MAX_NB_CATEGORIES",
+        "cumulative_proportion": 0.95,
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "type": "CATEGORY",
+        "customProcessorWantsMatrix": false,
+        "missing_handling": "NONE",
+        "category_handling": "DUMMIFY",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "Text",
+          "userModified": false
+        },
+        "max_nb_categories": 100,
+        "max_cat_safety": 200
+      },
+      "num_comments": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      },
+      "score": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "DoubleMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      },
+      "retrieved_on": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      },
+      "sexist(topic)": {
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "role": "TARGET",
+        "generate_derivative": false,
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "type": "NUMERIC",
+        "impute_constant_value": 0.0,
+        "binarize_threshold_mode": "MEDIAN"
+      },
+      "lda_topic": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      },
+      "text": {
+        "hashSVDHashSize": 200000,
+        "minRowsRatio": 0.001,
+        "text_handling": "CUSTOM",
+        "ngramMaxSize": 1,
+        "role": "INPUT",
+        "stopWordsMode": "NONE",
+        "maxWords": 0,
+        "useCustomVectorizer": false,
+        "sendToInput": "text_preprocessed",
+        "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d300)",
+        "type": "TEXT",
+        "customProcessorWantsMatrix": false,
+        "ngramMinSize": 1,
+        "maxRowsRatio": 0.8,
+        "hashSVDSVDComponents": 100,
+        "name": "text",
+        "hashSVDSVDLimit": 50000,
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "FreeText",
+          "userModified": true
+        }
+      },
+      "created_utc": {
+        "rescaling": "AVGSTD",
+        "missing_impute_with": "MEAN",
+        "role": "REJECT",
+        "sendToInput": "main",
+        "customHandlingCode": "",
+        "binarize_constant_threshold": 0.0,
+        "type": "NUMERIC",
+        "binarize_threshold_mode": "MEDIAN",
+        "customProcessorWantsMatrix": false,
+        "quantile_bin_nb_bins": 4,
+        "generate_derivative": false,
+        "missing_handling": "IMPUTE",
+        "numerical_handling": "REGULAR",
+        "state": {
+          "autoModifiedByDSS": false,
+          "recordedMeaning": "LongMeaning",
+          "userModified": false
+        },
+        "impute_constant_value": 0.0
+      }
+    },
+    "skipPreprocessing": false,
+    "feature_generation": {
+      "polynomial_combinations": {
+        "behavior": "DISABLED"
+      },
+      "manual_interactions": {
+        "interactions": []
+      },
+      "numericals_clustering": {
+        "all_features": false,
+        "input_features": [],
+        "k": 0,
+        "behavior": "DISABLED"
+      },
+      "categoricals_count_transformer": {
+        "all_features": false,
+        "input_features": [],
+        "behavior": "DISABLED"
+      },
+      "pairwise_linear": {
+        "behavior": "DISABLED"
+      }
+    },
+    "preprocessingFitSampleRatio": 1.0,
+    "preprocessingFitSampleSeed": 1337,
+    "feature_selection_params": {
+      "pca_params": {
+        "n_features": 25,
+        "variance_proportion": 0.9
+      },
+      "custom_params": {
+        "code": "# type your code here"
+      },
+      "method": "NONE",
+      "correlation_params": {
+        "min_abs_correlation": 0.0,
+        "max_abs_correlation": 1.0,
+        "n_features": 25
+      },
+      "lasso_params": {
+        "alpha": [
+          0.01,
+          0.1,
+          1.0,
+          10.0,
+          100.0
+        ],
+        "cross_validate": true
+      },
+      "random_forest_params": {
+        "depth": 10,
+        "n_trees": 30,
+        "n_features": 25
+      }
+    }
+  },
+  "backendType": "KERAS",
+  "expectedPreparationOutputSchema": {
+    "columns": [
+      {
+        "name": "created_utc",
+        "type": "bigint"
+      },
+      {
+        "name": "subreddit",
+        "type": "string"
+      },
+      {
+        "name": "sexist(sub)",
+        "type": "bigint"
+      },
+      {
+        "name": "num_comments",
+        "type": "bigint"
+      },
+      {
+        "name": "score",
+        "type": "double"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "selftext",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "text_stemmed",
+        "type": "string"
+      },
+      {
+        "name": "gilded",
+        "type": "bigint"
+      },
+      {
+        "name": "retrieved_on",
+        "type": "bigint"
+      },
+      {
+        "name": "lda_topic",
+        "type": "bigint"
+      },
+      {
+        "name": "sexist(topic)",
+        "type": "bigint"
+      }
+    ],
+    "userModified": false
+  },
+  "script": {
+    "columnsSelection": {
+      "mode": "ALL"
+    },
+    "explorationSampling": {
+      "_refreshTrigger": 0,
+      "selection": {
+        "filter": {
+          "distinct": false,
+          "enabled": false
+        },
+        "latestPartitionsN": 1,
+        "maxRecords": 10000,
+        "ordering": {
+          "rules": [],
+          "enabled": false
+        },
+        "withinFirstN": -1,
+        "partitionSelectionMethod": "ALL",
+        "maxStoredBytes": 104857600,
+        "targetRatio": 0.02,
+        "maxReadUncompressedBytes": -1,
+        "samplingMethod": "HEAD_SEQUENTIAL"
+      },
+      "autoRefreshSample": false
+    },
+    "explorationFilters": [],
+    "exploreUIParams": {},
+    "steps": [],
+    "maxProcessedMemTableBytes": -1,
+    "previewMode": "ALL_ROWS",
+    "vizSampling": {
+      "_refreshTrigger": 0,
+      "autoRefreshSample": false
+    },
+    "analysisColumnData": {},
+    "columnWidthsByName": {},
+    "sorting": [],
+    "globalSearchQuery": "",
+    "coloring": {
+      "scheme": "MEANING_AND_STATUS",
+      "individualColumns": [],
+      "valueColoringMode": "HASH"
+    }
+  },
+  "core": {
+    "taskType": "PREDICTION",
+    "executionParams": {
+      "envSelection": {
+        "envName": "Tensorflow",
+        "envMode": "EXPLICIT_ENV"
+      },
+      "envName": "Tensorflow",
+      "containerSelection": {
+        "containerMode": "INHERIT"
+      },
+      "sparkParams": {
+        "pipelineAllowMerge": true,
+        "sparkPreparedDFStorageLevel": "MEMORY_AND_DISK",
+        "pipelineAllowStart": true,
+        "sparkExecutionEngine": "SPARK_SUBMIT",
+        "sparkConf": {
+          "inheritConf": "default",
+          "conf": []
+        },
+        "sparkRepartitionNonHDFS": 1,
+        "sparkUseGlobalMetastore": false
+      },
+      "sparkCheckpoint": "NONE"
+    },
+    "backendType": "KERAS",
+    "target_variable": "sexist(topic)",
+    "weight": {
+      "weightMethod": "NO_WEIGHTING"
+    },
+    "time": {
+      "ascending": true,
+      "enabled": false
+    },
+    "partitionedModel": {
+      "ssdSelection": {
+        "useMemTable": false,
+        "filter": {
+          "distinct": false,
+          "enabled": false
+        },
+        "latestPartitionsN": 1,
+        "maxRecords": -1,
+        "ordering": {
+          "rules": [],
+          "enabled": false
+        },
+        "withinFirstN": -1,
+        "partitionSelectionMethod": "ALL",
+        "targetRatio": 0.02,
+        "maxReadUncompressedBytes": -1,
+        "samplingMethod": "FULL"
+      },
+      "enabled": false
+    },
+    "calibration": {
+      "calibrationMethod": "NO_CALIBRATION"
+    },
+    "prediction_type": "BINARY_CLASSIFICATION"
+  },
+  "operationMode": "TRAIN_SPLITTED_ONLY",
+  "partSource": "ACTIVE_VERSION",
+  "envName": "Tensorflow",
+  "splitParams": {
+    "testOnLargerValues": true,
+    "instanceIdRefresher": 0,
+    "ssdSeed": 1337,
+    "nFolds": 5,
+    "subSamplingSeed": 1337,
+    "ssdSplitMode": "RANDOM",
+    "splitBeforePrepare": true,
+    "ssdSelection": {
+      "useMemTable": false,
+      "filter": {
+        "distinct": false,
+        "enabled": false
+      },
+      "latestPartitionsN": 1,
+      "maxRecords": 100000,
+      "ordering": {
+        "rules": [],
+        "enabled": false
+      },
+      "withinFirstN": -1,
+      "partitionSelectionMethod": "ALL",
+      "targetRatio": 0.02,
+      "maxReadUncompressedBytes": -1,
+      "samplingMethod": "HEAD_SEQUENTIAL"
+    },
+    "ssdTrainingRatio": 0.8,
+    "ttPolicy": "SPLIT_SINGLE_DATASET",
+    "kfold": false
+  },
+  "sparkParams": {
+    "pipelineAllowMerge": true,
+    "sparkPreparedDFStorageLevel": "MEMORY_AND_DISK",
+    "pipelineAllowStart": true,
+    "sparkExecutionEngine": "SPARK_SUBMIT",
+    "sparkConf": {
+      "inheritConf": "default",
+      "conf": []
+    },
+    "sparkRepartitionNonHDFS": 1,
+    "sparkUseGlobalMetastore": false
+  }
+}
