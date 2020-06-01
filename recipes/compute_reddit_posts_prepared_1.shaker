@@ -3,14 +3,14 @@
     "mode": "ALL"
   },
   "explorationSampling": {
-    "_refreshTrigger": 1,
+    "_refreshTrigger": 2,
     "selection": {
       "filter": {
         "distinct": false,
         "enabled": false
       },
       "latestPartitionsN": 1,
-      "maxRecords": 1000000,
+      "maxRecords": 10000,
       "ordering": {
         "rules": [],
         "enabled": false
@@ -20,7 +20,7 @@
       "maxStoredBytes": -1,
       "targetRatio": 0.02,
       "maxReadUncompressedBytes": -1,
-      "samplingMethod": "HEAD_SEQUENTIAL"
+      "samplingMethod": "RANDOM_FIXED_NB_EXACT"
     },
     "autoRefreshSample": false
   },
@@ -30,28 +30,6 @@
     "autoRefresh": true
   },
   "steps": [
-    {
-      "preview": false,
-      "metaType": "PROCESSOR",
-      "disabled": false,
-      "type": "FilterOnValue",
-      "params": {
-        "normalizationMode": "EXACT",
-        "booleanMode": "AND",
-        "columns": [
-          "subreddit"
-        ],
-        "values": [
-          "sex",
-          "Christianity",
-          "datascience"
-        ],
-        "matchingMode": "FULL_STRING",
-        "action": "REMOVE_ROW",
-        "appliesTo": "SINGLE_COLUMN"
-      },
-      "alwaysShowComment": false
-    },
     {
       "preview": false,
       "metaType": "PROCESSOR",
