@@ -1,4 +1,3 @@
-%pylab inline
 import warnings                         # Disable some warnings
 warnings.filterwarnings("ignore",category=DeprecationWarning)
 import dataiku
