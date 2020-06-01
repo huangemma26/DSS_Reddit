@@ -163,7 +163,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "text_stemmed",
-        "role": "REJECT",
+        "role": "INPUT",
         "type": "TEXT",
         "state": {
           "userModified": false,
@@ -172,7 +172,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d32)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "main"
+        "sendToInput": "text_stemmed_preprocessed"
       },
       "title": {
         "text_handling": "CUSTOM",
@@ -338,7 +338,7 @@
         "stopWordsMode": "NONE",
         "useCustomVectorizer": false,
         "name": "text",
-        "role": "INPUT",
+        "role": "REJECT",
         "type": "TEXT",
         "state": {
           "userModified": true,
@@ -347,7 +347,7 @@
         },
         "customHandlingCode": "from dataiku.doctor.deep_learning.preprocessing import TokenizerProcessor\n\n# Defines a processor that tokenizes a text. It computes a vocabulary on all the corpus.\n# Then, each text is converted to a vector representing the sequence of words, where each \n# element represents the index of the corresponding word in the vocabulary. The result is \n# padded with 0 up to the `max_len` in order for all the vectors to have the same length.\n\n#   num_words  - maximum number of words in the vocabulary\n#   max_len    - length of each sequence. If the text is longer,\n#                it will be truncated, and if it is shorter, it will be padded\n#                with 0.\nprocessor \u003d TokenizerProcessor(num_words\u003d10000, max_len\u003d300)",
         "customProcessorWantsMatrix": false,
-        "sendToInput": "text_preprocessed"
+        "sendToInput": "main"
       },
       "created_utc": {
         "generate_derivative": false,
@@ -1274,7 +1274,7 @@
       "enabled": true,
       "kerasInputs": [
         "main",
-        "text_preprocessed"
+        "text_stemmed_preprocessed"
       ],
       "buildCode": "from keras.layers import Embedding, LSTM\nfrom keras.layers import Dense, Input, Flatten\nfrom keras.models import Model\n\ndef build_model(input_shapes, n_classes\u003dNone):\n\n    #### DEFINING THE INPUT\n    # You need to modify the name and length of the \"text_input\" \n    # according to the preprocessing and name of your \n    # initial feature.\n    # This feature should to be preprocessed as a \"Text\", with a \n    # custom preprocessing using the \"TokenizerProcessor\" class\n    text_length \u003d 300\n    vocabulary_size \u003d 10000\n    text_input_name \u003d \"text_preprocessed\"\n\n    text_input \u003d Input(shape\u003d(text_length,), name\u003dtext_input_name)\n\n    #### DEFINING THE ARCHITECTURE\n    emb \u003d Embedding(output_dim\u003d512, input_dim\u003dvocabulary_size, input_length\u003dtext_length)(text_input)\n    lstm_out \u003d LSTM(128)(emb)\n    \n    x \u003d Dense(128, activation\u003d\u0027relu\u0027)(lstm_out)\n    x \u003d Dense(64, activation\u003d\u0027relu\u0027)(x)\n    predictions \u003d Dense(n_classes, activation\u003d\u0027sigmoid\u0027)(x)\n\n    model \u003d Model(inputs\u003dtext_input, outputs\u003dpredictions)\n\n    return model\n\ndef compile_model(model):\n    model.compile(\n        optimizer\u003d\"adam\",\n        loss\u003d\"categorical_crossentropy\"\n    )\n    return model"
     },
