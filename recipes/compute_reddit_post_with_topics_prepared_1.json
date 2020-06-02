@@ -11,6 +11,9 @@
           "map": {
             "reddit_post_with_topics": {
               "repartition": 10
+            },
+            "reddit_posts_predict_topics": {
+              "repartition": 10
             }
           }
         },
@@ -69,11 +72,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 0,
+    "versionNumber": 1,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1591136838316
+    "lastModifiedOn": 1591136847058
   },
   "creationTag": {
     "versionNumber": 0,
