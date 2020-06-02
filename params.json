@@ -181,11 +181,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 12,
+    "versionNumber": 16,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590612377550
+    "lastModifiedOn": 1591137250919
   },
   "creationTag": {
     "versionNumber": 0,
@@ -219,14 +219,14 @@
             "stateChangedOn": 0
           },
           {
-            "done": false,
+            "done": true,
             "text": "LSTM",
             "createdOn": 1590272070599,
             "createdBy": "admin",
             "stateChangedOn": 0
           },
           {
-            "done": false,
+            "done": true,
             "text": "Feed results back into model",
             "createdOn": 1590272082999,
             "createdBy": "admin",
@@ -240,9 +240,16 @@
             "stateChangedOn": 0
           },
           {
-            "done": false,
+            "done": true,
             "text": "look at results with new data and see what model predicts",
             "createdOn": 1590612377431,
+            "createdBy": "admin",
+            "stateChangedOn": 0
+          },
+          {
+            "done": false,
+            "text": "lstm on sub with topics",
+            "createdOn": 1591137250830,
             "createdBy": "admin",
             "stateChangedOn": 0
           }
