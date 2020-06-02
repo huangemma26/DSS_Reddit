@@ -9,7 +9,7 @@ from sklearn.decomposition import LatentDirichletAllocation,NMF
 import pyLDAvis.sklearn
 import numpy as np
 
-mydataset = dataiku.Dataset("reddit_posts_predict")
+mydataset = dataiku.Dataset("reddit_posts_prepared")
 df = mydataset.get_dataframe()
 
 # Get the column names
@@ -59,5 +59,5 @@ df['lda_topic'] = lda_topic
 
 
 # Write recipe outputs
-reddit_posts_predict_topics = dataiku.Dataset("reddit_posts_predict_topics")
+reddit_posts_predict_topics = dataiku.Dataset("reddit_posts_with_topics_2")
 reddit_posts_predict_topics.write_with_schema(df)
