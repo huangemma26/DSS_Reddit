@@ -52,7 +52,7 @@
     "main": {
       "items": [
         {
-          "ref": "reddit_post_with_topics",
+          "ref": "reddit_post_with_topics_2",
           "deps": []
         }
       ]
@@ -69,11 +69,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 2,
+    "versionNumber": 3,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1590529731383
+    "lastModifiedOn": 1591137139895
   },
   "creationTag": {
     "versionNumber": 0,
