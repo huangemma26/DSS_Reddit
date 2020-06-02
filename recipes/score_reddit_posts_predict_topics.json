@@ -24,7 +24,7 @@
     "main": {
       "items": [
         {
-          "ref": "reddit_posts_predict_topics",
+          "ref": "reddit_post_with_topics_2",
           "deps": []
         }
       ]
@@ -41,11 +41,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 1,
+    "versionNumber": 2,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1591130586047
+    "lastModifiedOn": 1591137283276
   },
   "creationTag": {
     "versionNumber": 0,
