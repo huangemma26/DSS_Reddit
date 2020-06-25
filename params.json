@@ -10,6 +10,15 @@
         "modes": [
           "READ"
         ]
+      },
+      {
+        "objectRef": {
+          "objectId": "Topic modeling on reddit_posts_prepared (admin)",
+          "objectType": "JUPYTER_NOTEBOOK"
+        },
+        "modes": [
+          "READ"
+        ]
       }
     ]
   },
@@ -181,11 +190,11 @@
     }
   },
   "versionTag": {
-    "versionNumber": 16,
+    "versionNumber": 17,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1591137250919
+    "lastModifiedOn": 1593053003196
   },
   "creationTag": {
     "versionNumber": 0,
