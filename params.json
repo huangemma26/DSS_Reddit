@@ -1,269 +1,271 @@
 {
-  "dashboardAuthorizations": {
-    "allAuthorized": false,
-    "authorizations": [
-      {
-        "objectRef": {
-          "objectId": "reddit_post_with_topics",
-          "objectType": "DATASET"
-        },
-        "modes": [
-          "READ"
-        ]
-      },
-      {
-        "objectRef": {
-          "objectId": "Topic modeling on reddit_posts_prepared (admin)",
-          "objectType": "JUPYTER_NOTEBOOK"
-        },
-        "modes": [
-          "READ"
-        ]
-      }
-    ]
-  },
-  "exposedObjects": {
-    "objects": []
-  },
-  "projectType": "REGULAR",
-  "owner": "admin",
-  "permissions": [],
   "additionalDashboardUsers": {
     "users": []
-  },
-  "tutorialProject": false,
-  "settings": {
-    "flowAnchorSourcesAndSinks": true,
-    "gitCommitMode": "AUTO",
-    "disableAutomaticTriggers": false,
-    "integrations": {
-      "integrations": []
-    },
-    "flowBuildSettings": {
-      "mergeSparkPipelines": false,
-      "pruneBeforeSparkPipelines": true,
-      "mergeSqlPipelines": false,
-      "pruneBeforeSqlPipelines": true
-    },
-    "limitsSettings": {
-      "memSampleBytes": {
-        "soft": -1,
-        "hard": -1
-      },
-      "shakerMemTableBytes": {
-        "soft": -1,
-        "hard": -1
-      },
-      "attachmentBytes": {
-        "soft": -1,
-        "hard": -1
-      }
-    },
-    "relocationSettings": {
-      "sqlLikeRecipesInitializationMode": "RESOLVED_TABLE_REFERENCES"
-    },
-    "recipeEnginesPreferences": {
-      "forbiddenEngines": [],
-      "enginesPreferenceOrder": [],
-      "forbiddenByRecipeType": {},
-      "preferenceByRecipeType": {}
-    },
-    "codeEnvs": {
-      "python": {
-        "useBuiltinEnv": true,
-        "preventOverride": false
-      },
-      "r": {
-        "useBuiltinEnv": true,
-        "preventOverride": false
-      }
-    },
-    "container": {
-      "containerMode": "NONE"
-    },
-    "datasetsCreationSettings": {
-      "useGlobal": true,
-      "preferedStorageFormats": "CSV_ESCAPING_NOGZIP_FORHIVE,CSV_EXCEL_GZIP,PARQUET_HIVE",
-      "virtualizable": false,
-      "allowUploadsWithoutConnection": true
-    },
-    "hiveEngineCreationSettings": {
-      "useGlobal": true,
-      "executionEngine": "HIVECLI_LOCAL"
-    },
-    "sparkEngineCreationSettings": {
-      "useGlobal": true,
-      "executionEngine": "SPARK_SUBMIT",
-      "useGlobalMetastore": false
-    },
-    "impalaEngineCreationSettings": {
-      "useGlobal": true,
-      "streamMode": true
-    },
-    "wikiSettings": {
-      "promoted": false
-    },
-    "cluster": {
-      "clusterMode": "INHERIT"
-    },
-    "k8sCluster": {
-      "clusterMode": "INHERIT"
-    },
-    "virtualWebAppBackendSettings": {
-      "mode": "INHERIT",
-      "preventOverride": false,
-      "infra": {
-        "containerSelection": {
-          "containerMode": "INHERIT"
-        },
-        "overrideGlobalK8sExposition": false,
-        "exposition": {
-          "type": "local_process",
-          "params": {}
-        },
-        "scaling": {
-          "initialReplicas": 1,
-          "hpa": false,
-          "hpaTargetCPUPercent": 0,
-          "hpaMinPods": 0,
-          "hpaMaxPods": 0
-        }
-      }
-    }
-  },
-  "name": "Identifying Toxicity Using Reddit Posts",
-  "projectStatus": "Sandbox",
-  "imgColor": "#e44b27",
-  "imgPattern": 6,
-  "metrics": {
-    "probes": [],
-    "engineConfig": {
-      "padRunsWithMetrics": false,
-      "hive": {
-        "active": true,
-        "extraConf": []
-      },
-      "basic": {},
-      "dss": {
-        "active": true,
-        "selection": {
-          "useMemTable": false,
-          "filter": {
-            "distinct": false,
-            "enabled": false
-          },
-          "partitionSelectionMethod": "ALL",
-          "latestPartitionsN": 1,
-          "ordering": {
-            "enabled": false,
-            "rules": []
-          },
-          "samplingMethod": "FULL",
-          "maxRecords": -1,
-          "targetRatio": 0.02,
-          "withinFirstN": -1,
-          "maxReadUncompressedBytes": -1
-        }
-      },
-      "sql": {
-        "active": true
-      },
-      "impala": {
-        "active": true
-      },
-      "spark": {
-        "active": true,
-        "extraConf": []
-      },
-      "python": {}
-    },
-    "displayedState": {
-      "columns": [],
-      "metrics": []
-    }
-  },
-  "metricsChecks": {
-    "runOnBuild": false,
-    "checks": [],
-    "displayedState": {
-      "checks": []
-    }
-  },
-  "versionTag": {
-    "versionNumber": 17,
-    "lastModifiedBy": {
-      "login": "admin"
-    },
-    "lastModifiedOn": 1593053003196
-  },
-  "creationTag": {
-    "versionNumber": 0,
-    "lastModifiedBy": {
-      "login": "admin"
-    },
-    "lastModifiedOn": 1590017462453
-  },
-  "shortDesc": "The project *Identifying Toxicity Using Reddit Posts* was created by Administrator on May 20th 2020",
-  "tags": [],
-  "customFields": {},
+  }, 
   "checklists": {
     "checklists": [
       {
-        "id": "8a502d",
-        "title": "Todo list",
-        "createdOn": 0,
+        "createdOn": 0, 
+        "id": "8a502d", 
         "items": [
           {
-            "done": true,
-            "text": "Clean Data",
-            "createdOn": 1590272050933,
-            "createdBy": "admin",
-            "stateChangedOn": 0
-          },
+            "createdBy": "admin", 
+            "createdOn": 1590272050933, 
+            "done": true, 
+            "stateChangedOn": 0, 
+            "text": "Clean Data"
+          }, 
           {
-            "done": true,
-            "text": "Topic Models",
-            "createdOn": 1590272066668,
-            "createdBy": "admin",
-            "stateChangedOn": 0
-          },
+            "createdBy": "admin", 
+            "createdOn": 1590272066668, 
+            "done": true, 
+            "stateChangedOn": 0, 
+            "text": "Topic Models"
+          }, 
           {
-            "done": true,
-            "text": "LSTM",
-            "createdOn": 1590272070599,
-            "createdBy": "admin",
-            "stateChangedOn": 0
-          },
+            "createdBy": "admin", 
+            "createdOn": 1590272070599, 
+            "done": true, 
+            "stateChangedOn": 0, 
+            "text": "LSTM"
+          }, 
           {
-            "done": true,
-            "text": "Feed results back into model",
-            "createdOn": 1590272082999,
-            "createdBy": "admin",
-            "stateChangedOn": 0
-          },
+            "createdBy": "admin", 
+            "createdOn": 1590272082999, 
+            "done": true, 
+            "stateChangedOn": 0, 
+            "text": "Feed results back into model"
+          }, 
           {
-            "done": false,
-            "text": "Train model on Google Big Query",
-            "createdOn": 1590272097765,
-            "createdBy": "admin",
-            "stateChangedOn": 0
-          },
+            "createdBy": "admin", 
+            "createdOn": 1590272097765, 
+            "done": false, 
+            "stateChangedOn": 0, 
+            "text": "Train model on Google Big Query"
+          }, 
           {
-            "done": true,
-            "text": "look at results with new data and see what model predicts",
-            "createdOn": 1590612377431,
-            "createdBy": "admin",
-            "stateChangedOn": 0
-          },
+            "createdBy": "admin", 
+            "createdOn": 1590612377431, 
+            "done": true, 
+            "stateChangedOn": 0, 
+            "text": "look at results with new data and see what model predicts"
+          }, 
           {
-            "done": false,
-            "text": "lstm on sub with topics",
-            "createdOn": 1591137250830,
-            "createdBy": "admin",
-            "stateChangedOn": 0
+            "createdBy": "admin", 
+            "createdOn": 1591137250830, 
+            "done": false, 
+            "stateChangedOn": 0, 
+            "text": "lstm on sub with topics"
           }
-        ]
+        ], 
+        "title": "Todo list"
       }
     ]
+  }, 
+  "creationTag": {
+    "lastModifiedBy": {
+      "login": "admin"
+    }, 
+    "lastModifiedOn": 1590017462453, 
+    "versionNumber": 0
+  }, 
+  "customFields": {}, 
+  "dashboardAuthorizations": {
+    "allAuthorized": false, 
+    "authorizations": [
+      {
+        "modes": [
+          "READ"
+        ], 
+        "objectRef": {
+          "objectId": "reddit_post_with_topics", 
+          "objectType": "DATASET"
+        }
+      }, 
+      {
+        "modes": [
+          "READ"
+        ], 
+        "objectRef": {
+          "objectId": "Topic modeling on reddit_posts_prepared (admin)", 
+          "objectType": "JUPYTER_NOTEBOOK"
+        }
+      }
+    ]
+  }, 
+  "exposedObjects": {
+    "objects": []
+  }, 
+  "imgColor": "#e44b27", 
+  "imgPattern": 6, 
+  "metrics": {
+    "displayedState": {
+      "columns": [], 
+      "metrics": []
+    }, 
+    "engineConfig": {
+      "basic": {}, 
+      "dss": {
+        "active": true, 
+        "selection": {
+          "filter": {
+            "distinct": false, 
+            "enabled": false
+          }, 
+          "latestPartitionsN": 1, 
+          "maxReadUncompressedBytes": -1, 
+          "maxRecords": -1, 
+          "ordering": {
+            "enabled": false, 
+            "rules": []
+          }, 
+          "partitionSelectionMethod": "ALL", 
+          "samplingMethod": "FULL", 
+          "targetRatio": 0.02, 
+          "useMemTable": false, 
+          "withinFirstN": -1
+        }
+      }, 
+      "hive": {
+        "active": true, 
+        "extraConf": []
+      }, 
+      "impala": {
+        "active": true
+      }, 
+      "padRunsWithMetrics": false, 
+      "python": {}, 
+      "spark": {
+        "active": true, 
+        "extraConf": []
+      }, 
+      "sql": {
+        "active": true
+      }
+    }, 
+    "probes": []
+  }, 
+  "metricsChecks": {
+    "checks": [], 
+    "displayedState": {
+      "checks": []
+    }, 
+    "runOnBuild": false
+  }, 
+  "name": "Identifying Toxicity Using Reddit Posts", 
+  "owner": "admin", 
+  "permissions": [], 
+  "projectStatus": "Sandbox", 
+  "projectType": "REGULAR", 
+  "settings": {
+    "cluster": {
+      "clusterMode": "INHERIT"
+    }, 
+    "codeEnvs": {
+      "python": {
+        "mode": "INHERIT", 
+        "preventOverride": false, 
+        "useBuiltinEnv": true
+      }, 
+      "r": {
+        "mode": "INHERIT", 
+        "preventOverride": false, 
+        "useBuiltinEnv": true
+      }
+    }, 
+    "container": {
+      "containerMode": "NONE"
+    }, 
+    "datasetsCreationSettings": {
+      "allowUploadsWithoutConnection": true, 
+      "preferedStorageFormats": "CSV_ESCAPING_NOGZIP_FORHIVE,CSV_EXCEL_GZIP,PARQUET_HIVE", 
+      "useGlobal": true, 
+      "virtualizable": false
+    }, 
+    "disableAutomaticTriggers": false, 
+    "flowAnchorSourcesAndSinks": true, 
+    "flowBuildSettings": {
+      "mergeSparkPipelines": false, 
+      "mergeSqlPipelines": false, 
+      "pruneBeforeSparkPipelines": true, 
+      "pruneBeforeSqlPipelines": true
+    }, 
+    "gitCommitMode": "AUTO", 
+    "hiveEngineCreationSettings": {
+      "executionEngine": "HIVECLI_LOCAL", 
+      "useGlobal": true
+    }, 
+    "impalaEngineCreationSettings": {
+      "streamMode": true, 
+      "useGlobal": true
+    }, 
+    "integrations": {
+      "integrations": []
+    }, 
+    "k8sCluster": {
+      "clusterMode": "INHERIT"
+    }, 
+    "limitsSettings": {
+      "attachmentBytes": {
+        "hard": -1, 
+        "soft": -1
+      }, 
+      "memSampleBytes": {
+        "hard": -1, 
+        "soft": -1
+      }, 
+      "shakerMemTableBytes": {
+        "hard": -1, 
+        "soft": -1
+      }
+    }, 
+    "recipeEnginesPreferences": {
+      "enginesPreferenceOrder": [], 
+      "forbiddenByRecipeType": {}, 
+      "forbiddenEngines": [], 
+      "preferenceByRecipeType": {}
+    }, 
+    "relocationSettings": {
+      "sqlLikeRecipesInitializationMode": "RESOLVED_TABLE_REFERENCES"
+    }, 
+    "sparkEngineCreationSettings": {
+      "executionEngine": "SPARK_SUBMIT", 
+      "useGlobal": true, 
+      "useGlobalMetastore": false
+    }, 
+    "virtualWebAppBackendSettings": {
+      "infra": {
+        "containerSelection": {
+          "containerMode": "INHERIT"
+        }, 
+        "exposition": {
+          "params": {}, 
+          "type": "local_process"
+        }, 
+        "overrideGlobalK8sExposition": false, 
+        "scaling": {
+          "hpa": false, 
+          "hpaMaxPods": 0, 
+          "hpaMinPods": 0, 
+          "hpaTargetCPUPercent": 0, 
+          "initialReplicas": 1
+        }
+      }, 
+      "mode": "INHERIT", 
+      "preventOverride": false
+    }, 
+    "wikiSettings": {
+      "promoted": false
+    }
+  }, 
+  "shortDesc": "The project *Identifying Toxicity Using Reddit Posts* was created by Administrator on May 20th 2020", 
+  "tags": [], 
+  "tutorialProject": false, 
+  "versionTag": {
+    "lastModifiedBy": {
+      "login": "admin"
+    }, 
+    "lastModifiedOn": 1593053003196, 
+    "versionNumber": 17
   }
 }
