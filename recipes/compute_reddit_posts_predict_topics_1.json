@@ -31,18 +31,18 @@
     "main": {
       "items": [
         {
-          "ref": "reddit_post_with_topics_3",
+          "ref": "reddit_post_with_topics",
           "appendMode": false
         }
       ]
     }
   },
   "versionTag": {
-    "versionNumber": 7,
+    "versionNumber": 8,
     "lastModifiedBy": {
       "login": "admin"
     },
-    "lastModifiedOn": 1597712174882
+    "lastModifiedOn": 1597712816193
   },
   "creationTag": {
     "versionNumber": 0,
